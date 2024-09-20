@@ -55,9 +55,18 @@
   --font--title-3-desktop: "Avenir Heavy 900", sans-serif;
   --font--subtitle-desktop: "Avenir Book 400", sans-serif;
   --font--body-2-stronger-desktop: "Avenir Black 900", sans-serif;
+  --font--button-l: "Avenir Heavy 900", sans-serif;
+  --font--xs: "Avenir Book 400", sans-serif;
+  --font--xs-b: "Avenir Black 900", sans-serif;
+  --font--sm-stronger: "Avenir Heavy 900", sans-serif;
   --font-size--title-2-desktop: 26px;
   --font-size--title-3-desktop: 20px;
   --font-size--subtitle-desktop: 16px;
+  --font-size--button-l: 16px;
+  --font-size--xs: 12px;
+  --font-size--sm-stronger: 14px;
+  --gray--20: #dfe0e6;
+  --gray--15: #e5e6eb;
   --line-height--subtitle-desktop: 21px;
   --line-height--large-title-mobile: 38px;
   --neutral--foreground--on-brand--rest: #fff;

@@ -20,6 +20,7 @@
   --font--titel-1-mobile: "Avenir Black 900", sans-serif;
   --font-size--titel-1-mobile: 32px;
   --line-height--titel-1-mobile: 34px;
+  --blue-pallet--blue-50: #0f80f0;
   --font-size--body-1-desktop: 20px;
   --line-height--body-1-desktop: 27px;
   --line-height--body-1-mobile: 26px;
@@ -39,10 +40,11 @@
   --paddings--l: 16px;
   --button-corner-radius: 4px;
   --paddings--snudge: 6px;
-  --blue-pallet--blue-50: #0f80f0;
   --10: #eff0f3;
   --gray--30: #ced1da;
   --gray--75: #5d647b;
+  --gray--20: #dfe0e6;
+  --brand-colorccs--titan-gray: #5d647b;
   --font--body-1-stronger-mobile: "Avenir Heavy 900", sans-serif;
   --font-size--body-1-stronger-mobile: 20px;
   --line-height--body-1-stronger-mobile: 26px;
@@ -50,11 +52,12 @@
   --font-size--body-1-stronger-desktop: 20px;
   --line-height--body-1-stronger-desktop: 27px;
   --black: black;
-  --brand-colorccs--titan-gray: #5d647b;
   --font--title-2-desktop: "Avenir Black 900", sans-serif;
   --font--title-3-desktop: "Avenir Heavy 900", sans-serif;
   --font--subtitle-desktop: "Avenir Book 400", sans-serif;
   --font--body-2-stronger-desktop: "Avenir Black 900", sans-serif;
+  --font--body-3-mobile: "Avenir Book 400", sans-serif;
+  --font--body-3-stronger-mobile: "Avenir Black 900", sans-serif;
   --font--button-l: "Avenir Heavy 900", sans-serif;
   --font--xs: "Avenir Book 400", sans-serif;
   --font--xs-b: "Avenir Black 900", sans-serif;
@@ -62,13 +65,16 @@
   --font-size--title-2-desktop: 26px;
   --font-size--title-3-desktop: 20px;
   --font-size--subtitle-desktop: 16px;
+  --font-size--body-3-mobile: 16px;
+  --font-size--body-3-stronger-mobile: 16px;
   --font-size--button-l: 16px;
   --font-size--xs: 12px;
   --font-size--sm-stronger: 14px;
-  --gray--20: #dfe0e6;
   --gray--15: #e5e6eb;
   --line-height--subtitle-desktop: 21px;
   --line-height--large-title-mobile: 38px;
+  --line-height--body-3-mobile: 20px;
+  --line-height--body-3-stronger-mobile: 20px;
   --neutral--foreground--on-brand--rest: #fff;
   --neutrals--neutral-100: #f9f9fb;
   --neutrals--neutral-550: #6e7c90;
@@ -101,12 +107,6 @@
   grid-template-columns: 1fr 1fr;
   grid-auto-columns: 1fr;
   display: grid;
-}
-
-.w-layout-hflex {
-  flex-direction: row;
-  align-items: flex-start;
-  display: flex;
 }
 
 @media screen and (max-width: 991px) {
@@ -470,6 +470,12 @@
 
 .headline.dark {
   color: var(--brand-colors--anthracite);
+  transition: color .2s;
+}
+
+.headline.dark:hover {
+  color: var(--blue-pallet--blue-50);
+  -webkit-text-stroke-color: var(--blue-pallet--blue-50);
 }
 
 .headline.dark.fixed {
@@ -1171,6 +1177,7 @@
   height: 16.25px;
   text-decoration: none;
   display: flex;
+  position: absolute;
 }
 
 .paragraph-5 {
@@ -1590,7 +1597,12 @@
 .grid-2 {
   grid-column-gap: 100px;
   grid-row-gap: 100px;
+  grid-template-rows: auto auto auto auto;
   width: 100%;
+}
+
+.grid-2.new {
+  display: none;
 }
 
 .link-block {
@@ -1745,7 +1757,12 @@
   display: flex;
 }
 
-.darkarrow, .bluearrow {
+.darkarrow {
+  position: absolute;
+}
+
+.bluearrow {
+  max-width: 100%;
   position: absolute;
 }
 
@@ -2033,10 +2050,15 @@
   border: 1px solid #0000;
 }
 
+.tab:hover {
+  border-color: var(--gray--20);
+  border-radius: var(--button-corner-radius);
+}
+
 .tab.w--current {
+  border: 1px solid var(--brand-colorccs--titan-gray);
+  border-radius: var(--button-corner-radius);
   background-color: #0000;
-  border: 1px solid #000;
-  border-radius: 4px;
 }
 
 .title-1 {
@@ -2521,6 +2543,29 @@
   text-decoration: none;
 }
 
+.link-block-2 {
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.link-block-2:hover {
+  color: #333;
+}
+
+.bluearrow-l, .darkarrow-l {
+  position: absolute;
+}
+
+.div-block-arrows-l {
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  display: flex;
+}
+
 @media screen and (max-width: 991px) {
   .navbar {
     flex-flow: row;
@@ -2965,8 +3010,36 @@
     height: auto;
   }
 
+  .headline.dark {
+    box-sizing: border-box;
+    clear: none;
+    direction: ltr;
+    text-align: left;
+    text-transform: none;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    object-fit: fill;
+    flex: 0 auto;
+    order: 0;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    display: flex;
+    overflow: visible;
+  }
+
   .headline.dark.fixed {
     width: 320px;
+  }
+
+  .headline.dark.short {
+    width: 220px;
+  }
+
+  .paragraph.gray {
+    width: 100%;
+    display: block;
   }
 
   .left-2 {
@@ -2987,6 +3060,10 @@
     display: none;
   }
 
+  .left-3 {
+    overflow: visible;
+  }
+
   .headline-10 {
     flex-flow: column;
     justify-content: center;
@@ -2995,10 +3072,17 @@
 
   .headline-10.shopify-plugin {
     flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
   }
 
   .arrow_outward-2 {
-    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    display: flex;
   }
 
   .footer {
@@ -3038,6 +3122,14 @@
 
   .grid {
     grid-template-rows: auto auto auto;
+  }
+
+  .grid-2 {
+    grid-column-gap: 60px;
+    grid-row-gap: 60px;
+    grid-template-columns: 100%;
+    grid-auto-flow: row;
+    justify-items: stretch;
   }
 
   .text-13 {
@@ -3162,6 +3254,16 @@
 
   .github {
     width: auto;
+  }
+
+  .link-block-2 {
+    align-self: flex-start;
+  }
+
+  .bold-text {
+    clear: none;
+    overflow-wrap: anywhere;
+    width: 100%;
   }
 }
 

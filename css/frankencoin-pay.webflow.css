@@ -2274,6 +2274,7 @@
   font-size: var(--font-size--body-2-desktop);
   line-height: var(--font-size--body-2-desktop);
   padding: 8px 14px;
+  position: relative;
 }
 
 .nav-link-2:hover {
